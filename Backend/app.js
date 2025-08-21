@@ -30,6 +30,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/v1/message", messageRouter);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/appointment", appointmentRouter);
+app.get("/" , (req,res) => {
+    res.send("hlo home page")
+})
 
 app.use(errorMiddleware);
 
