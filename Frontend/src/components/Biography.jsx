@@ -14,7 +14,7 @@ const Biography = ({ imageUrl }) => {
           and empower people across the world.
         </p>
         <p>
-          Our journey started with a simple vision – to combine creativity and technology in a way that 
+          Our journey started with a simple vision - to combine creativity and technology in a way that 
           makes everyday life easier and more impactful.
         </p>
         <p>
