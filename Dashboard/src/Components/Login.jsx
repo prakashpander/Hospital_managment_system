@@ -26,6 +26,7 @@ const Login = () => {
       })
       toast.success(response.data.message);
       setIsAuthenticated(true)
+      setUser(res.data.user); // ye line extra add ki h 
       navigateTo("/")
     } catch (error) {
       toast.error(error.response.data.message)
