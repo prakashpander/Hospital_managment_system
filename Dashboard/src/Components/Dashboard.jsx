@@ -16,9 +16,12 @@ const Dashboard = () => {
 
     const fetchAppointments = async () => {
       try {
-        const { data } = await axios.get("https://hospital-managment-system-backend-lu01.onrender.com/api/v1/appointment/getall", {
+        const { data } = await axios.get("https://hospital-managment-system-backend-lu01.onrender.com/api/v1/appointment/getall",
+        
+        {
           withCredentials: true
         });
+
         setAppointment(data.appointment);
       } catch (error) {
         setAppointment([]);

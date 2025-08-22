@@ -43,34 +43,37 @@ const Sidebar = () => {
   };
 
   const handleLogout = async () => {
-        await axios.get("https://hospital-managment-system-backend-lu01.onrender.com/api/v1/user/admin/logout", {
-            withCredentials: true,
-        })
-            .then((res) => {
-                toast.success(res.data.message),
-                    setIsAuthenticated(false)
-            })
-            .catch((error) => {
-                toast.error(error?.response?.data?.message || "Server is not responding")
-            });
-    }
+    await axios.get("https://hospital-managment-system-backend-lu01.onrender.com/api/v1/user/admin/logout",
+
+      {
+        withCredentials: true,
+      })
+
+      .then((res) => {
+        toast.success(res.data.message),
+          setIsAuthenticated(false)
+      })
+      .catch((error) => {
+        toast.error(error?.response?.data?.message || "Server is not responding")
+      });
+  }
 
   return (
     <>
 
       <nav style={!isAuthenticated ? { display: "none" } : { display: "flex" }} className={show ? "show sidebar " : "sidebar"} >
-      <div className='links'>
-      <TiHome onClick={gotoHome}/>
-      <FaUserDoctor onClick={gotoDoctorPage}/>
-      <MdAddModerator onClick={gotoAddNewAdmin}/>
-      <IoPersonAddSharp onClick={gotoAddNewDoctor}/>
-      <AiFillMessage onClick={gotoMessagepage}/>
-      <RiLogoutBoxFill onClick={handleLogout}/>
-      </div>
-       </nav>
-       <div style={!isAuthenticated ? {display : "none"} : {display : "flex"}} className='wrapper'>
+        <div className='links'>
+          <TiHome onClick={gotoHome} />
+          <FaUserDoctor onClick={gotoDoctorPage} />
+          <MdAddModerator onClick={gotoAddNewAdmin} />
+          <IoPersonAddSharp onClick={gotoAddNewDoctor} />
+          <AiFillMessage onClick={gotoMessagepage} />
+          <RiLogoutBoxFill onClick={handleLogout} />
+        </div>
+      </nav>
+      <div style={!isAuthenticated ? { display: "none" } : { display: "flex" }} className='wrapper'>
         <GiHamburgerMenu className='hamburger' onClick={() => setShow(!show)}></GiHamburgerMenu>
-       </div>
+      </div>
     </>
   )
 }

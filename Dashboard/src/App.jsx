@@ -20,21 +20,24 @@ const App = () => {
 
     const fetchUser = async () => {
 
-    try {
-       const response =  await axios.get("https://hospital-managment-system-backend-lu01.onrender.com/api/v1/user/admin/me",{
-         withCredentials: true
-      });
-      setIsAuthenticated(true);
-      setUser(response.data.user);
+      try {
+        const response = await axios.get("https://hospital-managment-system-backend-lu01.onrender.com/api/v1/user/admin/me",
 
-    } catch (error) {
-      setIsAuthenticated(false);
-      setUser({});
-    }
+          {
+             withCredentials: true
+          });
+
+        setIsAuthenticated(true);
+        setUser(response.data.user);
+
+      } catch (error) {
+        setIsAuthenticated(false);
+        setUser({});
+      }
     };
     fetchUser();
 
-  },[]);
+  }, []);
 
   return (
     <>
@@ -48,7 +51,7 @@ const App = () => {
           <Route path='/messages' element={<Messages />} />
           <Route path='/doctors' element={<Doctor />} />
         </Routes>
-          <ToastContainer position='top-center' />
+        <ToastContainer position='top-center' />
       </Router>
     </>
   )

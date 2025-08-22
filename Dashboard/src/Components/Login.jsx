@@ -18,20 +18,27 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://hospital-managment-system-backend-lu01.onrender.com/api/v1/user/login", {
-        email, password, confirmPassword, role: "Admin",
-      }, {
+      const response = await axios.post("https://hospital-managment-system-backend-lu01.onrender.com/api/v1/user/login",
+        
+        { email, password, confirmPassword, role: "Admin", },
+        
+        {
         withCredentials: true,
         headers: { "Content-Type": "application/json" }
-      })
+    },
+    )
       toast.success(response.data.message);
       setIsAuthenticated(true)
+
        console.log("Full Response Live: ", response.data); 
-      setUser(res.data.user); // ye line extra add ki h 
+      setUser(response.data.user);// ye line extra add ki h 
+       localStorage.setItem("token", response.data.token); // ye line extra add ki h 
       navigateTo("/")
+
     } catch (error) {
       toast.error(error.response.data.message)
-        console.error("Login error:", err.response ? err.response.data : err);
+        console.error("Login error:", error.response ? error.response.data : error);
+        
     }
   };
 

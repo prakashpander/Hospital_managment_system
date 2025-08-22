@@ -22,7 +22,8 @@ const AddNewAdmin = () => {
     e.preventDefault();
     try {
       const response = await axios.post("https://hospital-managment-system-backend-lu01.onrender.com/api/v1/user/admin/addnew",
-        { firstName, lastName, email, phone, dob, gender, password}, {
+        { firstName, lastName, email, phone, dob, gender, password}, 
+      {
         withCredentials: true,
         headers: { "Content-Type": "application/json" }
       })

@@ -11,9 +11,12 @@ const Messages = () => {
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const { data } = await axios.get("https://hospital-managment-system-backend-lu01.onrender.com/api/v1/message/getall", {
-          withCredentials: true
-        })
+        const { data } = await axios.get("https://hospital-managment-system-backend-lu01.onrender.com/api/v1/message/getall",
+
+          {
+            withCredentials: true
+          })
+
         setMessages(data.messages);
       } catch (error) {
         console.log("ERROR OCCURED WHILE FETCHING MESSAGES", error);
@@ -33,7 +36,7 @@ const Messages = () => {
       <div className="banner">
         {
           messages && messages.length > 0 ? (messages.map(element => {
-            return(
+            return (
               <div className="card">
                 <div className="details"></div>
                 <p>First Name : <span>{element.firstName}</span></p>
@@ -44,9 +47,9 @@ const Messages = () => {
               </div>
             )
           })) : (<h1>No Messages</h1>)
-       }
+        }
 
-    </div>
+      </div>
     </section >
   );
 }

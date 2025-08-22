@@ -75,6 +75,7 @@ const AddNewDoctor = () => {
         formData, {
         withCredentials: true,
         headers: { "Content-Type": "multipart/form-data" }
+
       })
       toast.success(response.data.message);
       navigateTo("/")
