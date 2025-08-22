@@ -26,10 +26,12 @@ const Login = () => {
       })
       toast.success(response.data.message);
       setIsAuthenticated(true)
+       console.log("Full Response Live: ", response.data); 
       setUser(res.data.user); // ye line extra add ki h 
       navigateTo("/")
     } catch (error) {
       toast.error(error.response.data.message)
+        console.error("Login error:", err.response ? err.response.data : err);
     }
   };
 
