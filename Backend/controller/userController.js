@@ -47,12 +47,15 @@ export const login = catchAsyncErrors(async (req, res, next) => {
     };
 
     const user = await User.findOne({ email }).select("+password");
+      console.log("User Found: ", user);   // ye line extra add ki h 
+      console.log("Backend User Found:", user);  // ye line extra add ki h 
 
     if (!user) {
         return next(new ErrorHandler("Invalid Password And Email !", 400));
     };
 
     const isPasswordMatched = await user.comparePassword(password);
+     console.log("Password Match Status: ", isPasswordMatched); // ye line extra add ki h 
 
     if (!isPasswordMatched) {
         return next(new ErrorHandler("Invalid Password Or Email !", 400))
@@ -61,6 +64,8 @@ export const login = catchAsyncErrors(async (req, res, next) => {
     if (role !== user.role) {
         return next(new ErrorHandler("User With This Role Not Found !", 400));
     };
+    console.log("Sending Response User:", user);  // ye line extra add ki h 
+
     generateToken(user, "User Logged In Successfully", 200, res);
 });
 
