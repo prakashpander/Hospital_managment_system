@@ -63,8 +63,10 @@ export const login = catchAsyncErrors(async (req, res, next) => {
         return next(new ErrorHandler("User With This Role Not Found !", 400));
     };
     console.log("Sending Response User:", user);  // ye line extra add ki h 
-
+    
     generateToken(user, "User Logged In Successfully", 200, res);
+    
+
 });
 
 export const addNewAdmin = catchAsyncErrors(async (req, res, next) => {
@@ -86,6 +88,12 @@ export const addNewAdmin = catchAsyncErrors(async (req, res, next) => {
 
     const admin = await User.create({ firstName, lastName, email, phone, dob, gender, password, role: "Admin" });
     const token = admin.generateJsonWebToken();
+    res.cookie("token", token, {
+  httpOnly: true,
+  secure: true,
+  sameSite: "none"
+});
+
     res.status(200).json({
         success: true,
         message: "User created Successfully",
@@ -175,9 +183,5 @@ export const addNewDoctor = catchAsyncErrors(async (req, res, next) => {
             url: cloudinaryResponse.secure_url,
         },
     });
-    res.status(200).json({
-        success: true,
-        message: "New Doctor Registered",
-        doctor
-    });
+
 });

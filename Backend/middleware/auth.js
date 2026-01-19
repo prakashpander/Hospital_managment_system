@@ -26,15 +26,12 @@ import { User } from "../models/userSchema.js";
     console.log("req.headers =>", req.headers);
 console.log("req.cookies =>", req.cookies);
 
-  const authHeader = req.cookies.token || req.headers.authorization;
-  console.log("token check = ",authHeader);
+  const token = req.cookies.adminToken || req.headers.authorization?.split(" ")[1];
+  console.log("token check = ",token);
   
-
-  if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    return next(new ErrorHandler(`Admin not authenticating! Token is missing or invalid.authHeader = ${authHeader}`, 401));
+  if (!token) {
+    return next(new ErrorHandler(`Admin not authenticating! Token is missing or invalid.token = ${token}`, 401));
   }
-
-  const token = authHeader.split(" ")[1];
 
   const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
   req.user = await User.findById(decoded.id);
@@ -50,7 +47,7 @@ console.log("req.cookies =>", req.cookies);
 
 
 export const isPatientAuthenticated = catchAsyncErrors(async (req, res, next) => {
-    const token = req.cookies.patientToken;
+    const token = req.cookies.patientToken || req.headers.authorization?.split(" ")[1];
     if (!token) {
         return next(new ErrorHandler("Patient not authenticated !", 400));
     }
