@@ -85,11 +85,12 @@ export const addNewAdmin = catchAsyncErrors(async (req, res, next) => {
     };
 
     const admin = await User.create({ firstName, lastName, email, phone, dob, gender, password, role: "Admin" });
-
+    const token = admin.generateJsonWebToken();
     res.status(200).json({
         success: true,
         message: "User created Successfully",
-        admin:admin
+        admin:admin,
+        token:token
     });
 });
 
