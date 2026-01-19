@@ -29,7 +29,7 @@ import { User } from "../models/userSchema.js";
   
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    return next(new ErrorHandler("Admin not authenticating! Token is missing or invalid.", 401 , `authHeader = ${authHeader}`));
+    return next(new ErrorHandler(`Admin not authenticating! Token is missing or invalid.authHeader = ${authHeader}`, 401));
   }
 
   const token = authHeader.split(" ")[1];

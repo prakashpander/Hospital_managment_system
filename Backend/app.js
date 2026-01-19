@@ -12,7 +12,7 @@ dotnev.config({ path: ".env" });
 const app = express();
 
 app.use(cors({
-    origin: [process.env.FRONTEND_URL, process.env.DASHBOARD_URL , process.env.LOCAL_DASHBOARD_URL],
+    origin: [process.env.FRONTEND_URL, process.env.DASHBOARD_URL , process.env.LOCAL_DASHBOARD_URL , process.env.LOCALHOST],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
