@@ -9,7 +9,7 @@ import { MdAddModerator } from "react-icons/md"
 import { IoPersonAddSharp } from "react-icons/io5"
 
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../utils/axiosConfig.js';
 import { toast } from 'react-toastify';
 
 const Sidebar = () => {
@@ -48,9 +48,6 @@ const Sidebar = () => {
 
       {
         withCredentials: true,
-          headers: { "Content-Type": "application/json" ,
-          Authorization : `Bearer ${token}`
-        },
       })
 
       .then((res) => {

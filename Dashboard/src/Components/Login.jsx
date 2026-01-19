@@ -2,7 +2,7 @@ import React from 'react'
 import { useState , useContext } from "react";
 import { Context } from "../main";
 import { Navigate, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../utils/axiosConfig.js';
 import { toast } from 'react-toastify';
 
 const Login = () => {
@@ -24,7 +24,6 @@ const Login = () => {
         
         {
         withCredentials: true,
-        headers: { "Content-Type": "application/json" }
     },
     )
       toast.success(response.data.message);

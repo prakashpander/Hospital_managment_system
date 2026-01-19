@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { Context } from '../main';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../utils/axiosConfig.js';
 import { toast } from 'react-toastify';
 
 const AddNewAdmin = () => {
@@ -25,9 +25,7 @@ const AddNewAdmin = () => {
         { firstName, lastName, email, phone, dob, gender, password}, 
       {
         withCredentials: true,
-        headers: { "Content-Type": "application/json" ,
-          Authorization : `Bearer ${token}`
-        },
+        
       })
       toast.success(response.data.message);
       let token = localStorage.setItem("token",response.data.token)

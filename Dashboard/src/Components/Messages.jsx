@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Context } from '../main'
-import axios from 'axios';
+import axios from '../utils/axiosConfig.js';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 const Messages = () => {
@@ -10,17 +10,12 @@ const Messages = () => {
 
   useEffect(() => {
     const fetchMessages = async () => {
-      let token = localStorage.getItem("token");
-      console.log("token in get messages = ",token);
-      
+
       try {
         const { data } = await axios.get("https://hospital-managment-system-backend-lu01.onrender.com/api/v1/message/getall",
 
           {
-            withCredentials: true,
-            headers:{
-              Authorization :`Bearer ${token}`
-            }
+            withCredentials: true
           })
 
         setMessages(data.messages);

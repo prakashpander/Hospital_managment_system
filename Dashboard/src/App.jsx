@@ -9,7 +9,7 @@ import Messages from './Components/Messages'
 import Doctor from './Components/Doctors'
 import { ToastContainer } from 'react-toastify';
 import { Context } from "./main"
-import axios from "axios";
+import axios from "./utils/axiosConfig.js";
 import "./App.css";
 
 const App = () => {
@@ -25,9 +25,6 @@ const App = () => {
 
           {
              withCredentials: true,
-             headers:{
-              Authorization :`Bearer ${token}`
-             }
           });
 
         setIsAuthenticated(true);

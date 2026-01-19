@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Context } from '../main';
-import axios from 'axios';
+import axios from '../utils/axiosConfig.js';
 import { toast } from 'react-toastify';
 import { Navigate } from 'react-router-dom';
 
@@ -19,9 +19,7 @@ const Doctors = () => {
           
           {
           withCredentials: true,
-            headers: { "Content-Type": "application/json" ,
-          Authorization : `Bearer ${token}`
-        },
+      
         });
 
         setDoctors(data.doctors)

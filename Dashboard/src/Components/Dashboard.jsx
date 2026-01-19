@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
+import axios from '../utils/axiosConfig.js';
 import { Context } from '../main';
 import { toast } from 'react-toastify';
 import { Navigate } from 'react-router-dom';
