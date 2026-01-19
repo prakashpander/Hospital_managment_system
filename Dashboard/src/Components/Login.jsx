@@ -32,7 +32,6 @@ const Login = () => {
 
        console.log("Full Response Live: ", response.data); 
       setUser(response.data.user);// ye line extra add ki h 
-       localStorage.setItem("token", response.data.token); // ye line extra add ki h 
       navigateTo("/")
 
     } catch (error) {

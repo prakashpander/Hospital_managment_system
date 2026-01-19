@@ -28,9 +28,13 @@ const AddNewAdmin = () => {
         headers: { "Content-Type": "application/json" }
       })
       toast.success(response.data.message);
+      console.log("new Admin response = ",response.data.message);
+      
       navigateTo("/")
     } catch (error) {
       toast.error(error.response.data.message)
+      console.log("frontend error = ",error);
+      
     }
   }
 
