@@ -30,6 +30,9 @@ const AddNewAdmin = () => {
         },
       })
       toast.success(response.data.message);
+      let token = localStorage.setItem("token",response.data.token)
+      console.log("token in frontend = ",token);
+      
       console.log("new Admin response = ",response.data.message);
       
       navigateTo("/")

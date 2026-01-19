@@ -31,6 +31,8 @@ const Login = () => {
       setIsAuthenticated(true)
 
        console.log("Full Response Live: ", response.data); 
+         let token = localStorage.setItem("token",response.data.token)
+        console.log("token in frontend = ",token);
       setUser(response.data.user);// ye line extra add ki h 
       navigateTo("/")
 
