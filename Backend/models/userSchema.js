@@ -72,4 +72,6 @@ userSchema.methods.generateJsonWebToken = function() {
     });
 };
 
+
 export const User = mongoose.model("User",userSchema);
+

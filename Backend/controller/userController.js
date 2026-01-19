@@ -47,8 +47,6 @@ export const login = catchAsyncErrors(async (req, res, next) => {
     };
 
     const user = await User.findOne({ email }).select("+password");
-      console.log("User Found: ", user);   // ye line extra add ki h 
-      console.log("Backend User Found:", user);  // ye line extra add ki h 
 
     if (!user) {
         return next(new ErrorHandler("Invalid Password And Email !", 400));
@@ -91,6 +89,7 @@ export const addNewAdmin = catchAsyncErrors(async (req, res, next) => {
     res.status(200).json({
         success: true,
         message: "User created Successfully",
+        admin:admin
     });
 });
 

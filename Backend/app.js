@@ -7,12 +7,12 @@ import messageRouter from "./router/messageRouter.js";
 import userRouter from "./router/userRouter.js";
 import { errorMiddleware } from "./middleware/errorMiddleware.js";
 import appointmentRouter from "./router/appointmentRouter.js"
-dotnev.config(".env");
+dotnev.config({ path: ".env" });
 
 const app = express();
 
 app.use(cors({
-    origin: [process.env.FRONTEND_URL, process.env.DASHBOARD_URL],
+    origin: [process.env.FRONTEND_URL, process.env.DASHBOARD_URL , process.env.LOCAL_DASHBOARD_URL],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
