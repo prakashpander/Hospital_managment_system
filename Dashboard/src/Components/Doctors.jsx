@@ -12,11 +12,16 @@ const Doctors = () => {
   useEffect(() => {
 
     const fetchDoctors = async () => {
+      let token = localStorage.getItem("token");
+      
       try {
         const { data } = await axios.get("https://hospital-managment-system-backend-lu01.onrender.com/api/v1/user/doctors", 
           
           {
-          withCredentials: true
+          withCredentials: true,
+            headers: { "Content-Type": "application/json" ,
+          Authorization : `Bearer ${token}`
+        },
         });
 
         setDoctors(data.doctors)

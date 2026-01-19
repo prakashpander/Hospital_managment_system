@@ -25,7 +25,7 @@ const Messages = () => {
 
         setMessages(data.messages);
       } catch (error) {
-        console.log("ERROR OCCURED WHILE FETCHING MESSAGES", error);
+        console.log("ERROR OCCURED WHILE FETCHING MESSAGES u know that", error);
       };
     }
     fetchMessages();

@@ -43,10 +43,14 @@ const Sidebar = () => {
   };
 
   const handleLogout = async () => {
+    let token = localStorage.getItem("token");
     await axios.get("https://hospital-managment-system-backend-lu01.onrender.com/api/v1/user/admin/logout",
 
       {
         withCredentials: true,
+          headers: { "Content-Type": "application/json" ,
+          Authorization : `Bearer ${token}`
+        },
       })
 
       .then((res) => {
