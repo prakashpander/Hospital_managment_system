@@ -25,7 +25,9 @@ const AddNewAdmin = () => {
         { firstName, lastName, email, phone, dob, gender, password}, 
       {
         withCredentials: true,
-        headers: { "Content-Type": "application/json" }
+        headers: { "Content-Type": "application/json" ,
+          Authorization : `Bearer ${token}`
+        },
       })
       toast.success(response.data.message);
       console.log("new Admin response = ",response.data.message);
