@@ -19,12 +19,15 @@ const App = () => {
   useEffect(() => {
 
     const fetchUser = async () => {
-
+        let token = localStorage.getItem("token")
       try {
         const response = await axios.get("https://hospital-managment-system-backend-lu01.onrender.com/api/v1/user/admin/me",
 
           {
-             withCredentials: true
+             withCredentials: true,
+             headers:{
+              Authorization :`Bearer ${token}`
+             }
           });
 
         setIsAuthenticated(true);
