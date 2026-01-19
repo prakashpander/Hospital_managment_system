@@ -10,11 +10,17 @@ const Messages = () => {
 
   useEffect(() => {
     const fetchMessages = async () => {
+      let token = localStorage.getItem("token");
+      console.log("token in get messages = ",token);
+      
       try {
         const { data } = await axios.get("https://hospital-managment-system-backend-lu01.onrender.com/api/v1/message/getall",
 
           {
-            withCredentials: true
+            withCredentials: true,
+            headers:{
+              Authorization :`Bearer ${token}`
+            }
           })
 
         setMessages(data.messages);
