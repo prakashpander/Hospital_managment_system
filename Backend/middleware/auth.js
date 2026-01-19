@@ -23,6 +23,8 @@ import { User } from "../models/userSchema.js";
 
 
  export const isAdminAuthenticated = catchAsyncErrors(async (req, res, next) => {
+    console.log("req.headers =>", req.headers);
+console.log("req.cookies =>", req.cookies);
 
   const authHeader = req.cookies.token || req.headers.authorization;
   console.log("token check = ",authHeader);
