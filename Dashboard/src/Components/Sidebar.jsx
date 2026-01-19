@@ -7,7 +7,6 @@ import { GiHamburgerMenu } from "react-icons/gi"
 import { FaUserDoctor } from "react-icons/fa6"
 import { MdAddModerator } from "react-icons/md"
 import { IoPersonAddSharp } from "react-icons/io5"
-
 import { useNavigate } from 'react-router-dom';
 import axios from '../utils/axiosConfig.js';
 import { toast } from 'react-toastify';
@@ -52,7 +51,9 @@ const Sidebar = () => {
 
       .then((res) => {
         toast.success(res.data.message),
-          setIsAuthenticated(false)
+        setIsAuthenticated(false),
+        localStorage.removeItem("token"),
+        navigateTo("/login")
       })
       .catch((error) => {
         toast.error(error?.response?.data?.message || "Server is not responding")
