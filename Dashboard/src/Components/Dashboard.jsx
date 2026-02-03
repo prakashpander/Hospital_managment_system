@@ -9,7 +9,7 @@ import "./Dashboard.css";
 
 const Dashboard = () => {
 
-  const { isAuthenticated, user } = useContext(Context);
+  const { isAuthenticated, user , doctor } = useContext(Context);
   const [appointment, setAppointment] = useState([]);
   let navigate = useNavigate()
   let token = localStorage.getItem("token");
@@ -83,7 +83,7 @@ const Dashboard = () => {
           </div>
           <div className="thirdBox">
             <p>Registered Doctors</p>
-            <h3>20</h3>
+            <h3>{doctor.length}</h3>
           </div>
         </div>
         <div className="banner">

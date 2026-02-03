@@ -7,7 +7,7 @@ import { Navigate } from 'react-router-dom';
 const Doctors = () => {
 
   const [doctors, setDoctors] = useState([]);
-  const { isAuthenticated, setIsAuthenticated } = useContext(Context);
+  const { isAuthenticated, setIsAuthenticated , setDoctor } = useContext(Context);
 
   useEffect(() => {
 
@@ -23,6 +23,7 @@ const Doctors = () => {
         });
 
         setDoctors(data.doctors)
+        setDoctor(data.doctors)
         console.log(data.doctors)
       } catch (error) {
         toast.error(error.response.data.message)
