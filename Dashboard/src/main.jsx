@@ -9,7 +9,7 @@ const AppWrapper = () => {
   const [user, setUser] = useState(null); // false ki jge null kra hai 
   const [doctorLength, setDoctorLength] = useState(null); // false ki jge null kra hai 
   return (
-    <Context.Provider value={{ isAuthenticated, setIsAuthenticated, user, setUser , doctor , setDoctor }}>
+    <Context.Provider value={{ isAuthenticated, setIsAuthenticated, user, setUser , doctorLength , setDoctorLength }}>
       <App />
     </Context.Provider>
   );
