@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 
 const Login = () => {
 
-  const {isAuthenticated, setIsAuthenticated} = useContext(Context);
+  const {isAuthenticated, setIsAuthenticated , setUser} = useContext(Context);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -38,8 +38,7 @@ const Login = () => {
 
     } catch (error) {
       toast.error(error.response.data.message)
-        console.error("Login error:", error.response ? error.response.data : error);
-        
+      console.error("Login error:", error.response ? error.response.data : error); 
     }
   };
 

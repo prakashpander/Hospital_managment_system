@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from '../utils/axiosConfig.js';
 import { Context } from '../main';
 import { toast } from 'react-toastify';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { GoCheckCircleFill } from "react-icons/go"
 import { AiFillCloseCircle } from 'react-icons/ai';
 import "./Dashboard.css";
@@ -10,7 +10,12 @@ import "./Dashboard.css";
 const Dashboard = () => {
 
   const { isAuthenticated, user } = useContext(Context);
-  const [appointment, setAppointment] = useState([])
+  const [appointment, setAppointment] = useState([]);
+  let navigate = useNavigate()
+  let token = localStorage.getItem("token");
+  if (!token) {
+    navigate("/login")
+  }
 
   useEffect(() => {
 
