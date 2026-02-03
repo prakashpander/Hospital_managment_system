@@ -7,7 +7,7 @@ import { Navigate } from 'react-router-dom';
 const Doctors = () => {
 
   const [doctors, setDoctors] = useState([]);
-  const { isAuthenticated, setIsAuthenticated , setDoctor } = useContext(Context);
+  const { isAuthenticated, setIsAuthenticated , setDoctorLength } = useContext(Context);
 
   useEffect(() => {
 
@@ -23,9 +23,7 @@ const Doctors = () => {
         });
 
         setDoctors(data.doctors)
-        // setDoctor(data.doctors.length)
-        console.log("data.doctors = ",data.doctors)
-        console.log("data.doctors length = ",data.doctors.length)
+        setDoctorLength(data.doctors.length)
       } catch (error) {
         toast.error(error.response.data.message)
       }
