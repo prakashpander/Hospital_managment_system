@@ -23,8 +23,9 @@ const Doctors = () => {
         });
 
         setDoctors(data.doctors)
-        setDoctor(data.doctors.length)
-        console.log(data.doctors)
+        // setDoctor(data.doctors.length)
+        console.log("data.doctors = ",data.doctors)
+        console.log("data.doctors length = ",data.doctors.length)
       } catch (error) {
         toast.error(error.response.data.message)
       }

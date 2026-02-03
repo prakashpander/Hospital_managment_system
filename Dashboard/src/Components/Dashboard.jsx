@@ -83,7 +83,7 @@ const Dashboard = () => {
           </div>
           <div className="thirdBox">
             <p>Registered Doctors</p>
-            <h3>{doctor.length}</h3>
+            <h3>20</h3>
           </div>
         </div>
         <div className="banner">
